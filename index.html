@@ -22,8 +22,6 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { background: var(--warm-white); color: var(--charcoal); font-family: var(--sans); font-weight: 300; }
-
-/* NAV */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; justify-content: space-between; align-items: center;
@@ -39,8 +37,6 @@ nav {
 .nav-socials { display: flex; gap: 1rem; }
 .nav-socials a { color: var(--light); font-size: 0.8rem; text-decoration: none; font-family: var(--mono); transition: color 0.2s; }
 .nav-socials a:hover { color: var(--accent); }
-
-/* HERO */
 .hero {
   min-height: 100vh;
   display: grid; grid-template-columns: 1fr 1fr;
@@ -84,15 +80,11 @@ nav {
 .stat { text-align: center; }
 .stat-num { font-family: var(--serif); font-size: 3rem; color: var(--accent); display: block; }
 .stat-label { font-size: 0.8rem; color: var(--light); letter-spacing: 0.1em; margin-top: 0.3rem; }
-
-/* SECTIONS */
 section { padding: 6rem 5rem; }
 .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 4rem; }
 .section-num { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); }
 .section-title { font-family: var(--serif); font-size: 2.5rem; }
 .section-line { flex: 1; height: 1px; background: var(--border); }
-
-/* ABOUT */
 #about { background: var(--cream); }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
 .about-text p { font-size: 1rem; color: var(--mid); line-height: 1.9; margin-bottom: 1.2rem; }
@@ -100,8 +92,6 @@ section { padding: 6rem 5rem; }
 .info-item { padding: 1.5rem; background: white; border: 1px solid var(--border); }
 .info-label { font-family: var(--mono); font-size: 0.7rem; color: var(--light); letter-spacing: 0.1em; margin-bottom: 0.5rem; }
 .info-value { font-size: 0.95rem; color: var(--charcoal); font-weight: 500; }
-
-/* SKILLS */
 #skills { border-top: 1px solid var(--border); }
 .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
 .skill-card { padding: 2rem; border: 1px solid var(--border); transition: all 0.2s; }
@@ -110,8 +100,6 @@ section { padding: 6rem 5rem; }
 .skill-name { font-weight: 500; font-size: 0.95rem; margin-bottom: 0.8rem; }
 .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .tag { font-family: var(--mono); font-size: 0.7rem; padding: 0.2rem 0.6rem; background: var(--cream); color: var(--mid); border: 1px solid var(--border); }
-
-/* PROJECTS */
 #projects { background: var(--cream); border-top: 1px solid var(--border); }
 .projects-list { display: flex; flex-direction: column; gap: 1.5rem; }
 .project-card {
@@ -122,7 +110,6 @@ section { padding: 6rem 5rem; }
 }
 .project-card:hover { border-color: var(--accent); transform: translateX(4px); }
 .project-num { font-family: var(--mono); font-size: 0.75rem; color: var(--light); }
-.project-info { }
 .project-name { font-family: var(--serif); font-size: 1.3rem; margin-bottom: 0.4rem; }
 .project-desc { font-size: 0.85rem; color: var(--mid); line-height: 1.6; }
 .project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.8rem; }
@@ -132,8 +119,6 @@ section { padding: 6rem 5rem; }
 .status-live { color: #2E7D32; border-color: #2E7D32; background: #F1F8E9; }
 .status-dev { color: var(--accent); border-color: var(--accent); background: var(--accent-light); }
 .status-done { color: var(--mid); border-color: var(--border); }
-
-/* BLOG */
 #blog { border-top: 1px solid var(--border); }
 .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
 .blog-card { padding: 2rem; border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; }
@@ -143,8 +128,6 @@ section { padding: 6rem 5rem; }
 .blog-excerpt { font-size: 0.85rem; color: var(--mid); line-height: 1.7; }
 .blog-category { font-family: var(--mono); font-size: 0.7rem; color: var(--accent); margin-top: 1rem; }
 .blog-more { text-align: center; margin-top: 3rem; }
-
-/* CONTACT */
 #contact { background: var(--charcoal); color: white; border-top: 1px solid var(--border); }
 #contact .section-title { color: white; }
 #contact .section-line { background: #333; }
@@ -162,16 +145,12 @@ section { padding: 6rem 5rem; }
 .social-link:hover { border-color: var(--accent); background: rgba(196,113,58,0.1); }
 .social-platform { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); width: 90px; }
 .social-handle { font-size: 0.9rem; color: #ccc; }
-
-/* FOOTER */
 footer {
   background: #111; color: #555;
   padding: 2rem 5rem; font-family: var(--mono); font-size: 0.75rem;
   display: flex; justify-content: space-between; align-items: center;
   border-top: 1px solid #222;
 }
-
-/* MOBILE */
 @media (max-width: 768px) {
   nav { padding: 1rem 1.5rem; }
   .nav-links { display: none; }
@@ -187,8 +166,6 @@ footer {
   .project-num, .project-arrow { display: none; }
   footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
 }
-
-/* ANIMATIONS */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -219,11 +196,10 @@ footer {
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
     <p class="hero-tag">FREELANCE DEVELOPER & CREATOR</p>
-    <h1 class="hero-name">고윤숙<br><span>Ko yunsuk</span></h1>
+    <h1 class="hero-name">고윤숙<br><span>Ko Yunsuk</span></h1>
     <p class="hero-desc">웹·앱 개발부터 기획·디자인까지. 아이디어를 실제로 작동하는 서비스로 만드는 프리랜서 개발자입니다.</p>
     <div class="hero-cta">
       <a href="#projects" class="btn-primary">프로젝트 보기</a>
@@ -232,27 +208,14 @@ footer {
   </div>
   <div class="hero-right">
     <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-num">5+</span>
-        <p class="stat-label">PROJECTS</p>
-      </div>
-      <div class="stat">
-        <span class="stat-num">3+</span>
-        <p class="stat-label">YEARS EXP</p>
-      </div>
-      <div class="stat">
-        <span class="stat-num">Full</span>
-        <p class="stat-label">STACK</p>
-      </div>
-      <div class="stat">
-        <span class="stat-num">KR</span>
-        <p class="stat-label">BASED</p>
-      </div>
+      <div class="stat"><span class="stat-num">5+</span><p class="stat-label">PROJECTS</p></div>
+      <div class="stat"><span class="stat-num">3+</span><p class="stat-label">YEARS EXP</p></div>
+      <div class="stat"><span class="stat-num">Full</span><p class="stat-label">STACK</p></div>
+      <div class="stat"><span class="stat-num">KR</span><p class="stat-label">BASED</p></div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="section-header">
     <span class="section-num">01</span>
@@ -266,27 +229,14 @@ footer {
       <p>코드를 작성하는 것만큼이나 아이디어를 현실화하는 과정 자체를 즐깁니다.</p>
     </div>
     <div class="about-info">
-      <div class="info-item">
-        <p class="info-label">LOCATION</p>
-        <p class="info-value">인천, 대한민국</p>
-      </div>
-      <div class="info-item">
-        <p class="info-label">FOCUS</p>
-        <p class="info-value">Flutter · Firebase · Web App</p>
-      </div>
-      <div class="info-item">
-        <p class="info-label">AVAILABILITY</p>
-        <p class="info-value">프리랜서 프로젝트 수락 중</p>
-      </div>
-      <div class="info-item">
-        <p class="info-label">GITHUB</p>
-        <p class="info-value">github.com/koyunsuk</p>
-      </div>
+      <div class="info-item"><p class="info-label">LOCATION</p><p class="info-value">인천, 대한민국</p></div>
+      <div class="info-item"><p class="info-label">FOCUS</p><p class="info-value">Flutter · Firebase · Web App</p></div>
+      <div class="info-item"><p class="info-label">AVAILABILITY</p><p class="info-value">프리랜서 프로젝트 수락 중</p></div>
+      <div class="info-item"><p class="info-label">GITHUB</p><p class="info-value">github.com/koyunsuk</p></div>
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
 <section id="skills">
   <div class="section-header">
     <span class="section-num">02</span>
@@ -297,65 +247,36 @@ footer {
     <div class="skill-card">
       <div class="skill-icon">📱</div>
       <p class="skill-name">모바일 · 크로스플랫폼</p>
-      <div class="skill-tags">
-        <span class="tag">Flutter</span>
-        <span class="tag">Dart</span>
-        <span class="tag">Android</span>
-        <span class="tag">iOS</span>
-      </div>
+      <div class="skill-tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Android</span><span class="tag">iOS</span></div>
     </div>
     <div class="skill-card">
       <div class="skill-icon">🌐</div>
       <p class="skill-name">웹 프론트엔드</p>
-      <div class="skill-tags">
-        <span class="tag">HTML/CSS</span>
-        <span class="tag">JavaScript</span>
-        <span class="tag">React</span>
-        <span class="tag">Next.js</span>
-      </div>
+      <div class="skill-tags"><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">Next.js</span></div>
     </div>
     <div class="skill-card">
       <div class="skill-icon">🔥</div>
       <p class="skill-name">백엔드 · 클라우드</p>
-      <div class="skill-tags">
-        <span class="tag">Firebase</span>
-        <span class="tag">Firestore</span>
-        <span class="tag">Node.js</span>
-        <span class="tag">NestJS</span>
-      </div>
+      <div class="skill-tags"><span class="tag">Firebase</span><span class="tag">Firestore</span><span class="tag">Node.js</span><span class="tag">NestJS</span></div>
     </div>
     <div class="skill-card">
       <div class="skill-icon">🗄️</div>
       <p class="skill-name">데이터베이스</p>
-      <div class="skill-tags">
-        <span class="tag">Firestore</span>
-        <span class="tag">PostgreSQL</span>
-        <span class="tag">MySQL</span>
-      </div>
+      <div class="skill-tags"><span class="tag">Firestore</span><span class="tag">PostgreSQL</span><span class="tag">MySQL</span></div>
     </div>
     <div class="skill-card">
       <div class="skill-icon">🎨</div>
       <p class="skill-name">기획 · 디자인</p>
-      <div class="skill-tags">
-        <span class="tag">Figma</span>
-        <span class="tag">Wireframe</span>
-        <span class="tag">UI/UX</span>
-      </div>
+      <div class="skill-tags"><span class="tag">Figma</span><span class="tag">Wireframe</span><span class="tag">UI/UX</span></div>
     </div>
     <div class="skill-card">
       <div class="skill-icon">⚙️</div>
       <p class="skill-name">개발 도구</p>
-      <div class="skill-tags">
-        <span class="tag">Git</span>
-        <span class="tag">GitHub</span>
-        <span class="tag">VS Code</span>
-        <span class="tag">Flutter SDK</span>
-      </div>
+      <div class="skill-tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">VS Code</span><span class="tag">Flutter SDK</span></div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects">
   <div class="section-header">
     <span class="section-num">03</span>
@@ -369,9 +290,7 @@ footer {
         <span class="project-status status-dev">개발중</span>
         <p class="project-name">MoriKnit 모리니트</p>
         <p class="project-desc">뜨개질 올인원 플랫폼. 프로젝트 기록, 게이지 계산, 도안 제작, 스와치 관리, 커뮤니티까지. Flutter + Firebase로 웹·앱 동시 출시 예정.</p>
-        <div class="project-tags">
-          <span class="tag">Flutter</span><span class="tag">Firebase</span><span class="tag">Dart</span><span class="tag">Firestore</span>
-        </div>
+        <div class="project-tags"><span class="tag">Flutter</span><span class="tag">Firebase</span><span class="tag">Dart</span><span class="tag">Firestore</span></div>
       </div>
       <span class="project-arrow">→</span>
     </a>
@@ -381,9 +300,7 @@ footer {
         <span class="project-status status-done">납품완료</span>
         <p class="project-name">GreenTag Android MVP</p>
         <p class="project-desc">실제 고객사에 납품한 안드로이드 MVP 앱. 기획부터 개발, 배포까지 단독 진행.</p>
-        <div class="project-tags">
-          <span class="tag">Android</span><span class="tag">MVP</span>
-        </div>
+        <div class="project-tags"><span class="tag">Android</span><span class="tag">MVP</span></div>
       </div>
       <span class="project-arrow">→</span>
     </a>
@@ -393,9 +310,7 @@ footer {
         <span class="project-status status-done">완료</span>
         <p class="project-name">FuncMed 기능의학 클리닉 AI 플랫폼</p>
         <p class="project-desc">HQ 관리자·지점장·현장 태블릿 3종 인터페이스. AI 모델 가이드, Firestore 스키마, API 20종 설계.</p>
-        <div class="project-tags">
-          <span class="tag">React</span><span class="tag">Firebase</span><span class="tag">AI</span>
-        </div>
+        <div class="project-tags"><span class="tag">React</span><span class="tag">Firebase</span><span class="tag">AI</span></div>
       </div>
       <span class="project-arrow">→</span>
     </a>
@@ -405,29 +320,23 @@ footer {
         <span class="project-status status-done">완료</span>
         <p class="project-name">KAFA 한국예술재단 플랫폼</p>
         <p class="project-desc">3티어 예술 협회 플랫폼. KakaoTalk 단체채팅 AI 캘린더 추출 기능 포함. React Native + NestJS.</p>
-        <div class="project-tags">
-          <span class="tag">React Native</span><span class="tag">NestJS</span><span class="tag">GPT-4o</span>
-        </div>
+        <div class="project-tags"><span class="tag">React Native</span><span class="tag">NestJS</span><span class="tag">GPT-4o</span></div>
       </div>
       <span class="project-arrow">→</span>
     </a>
-    <a href="#" class="project-card">
+    <a href="https://koyunsuk.github.io/foursigns/" target="_blank" class="project-card">
       <span class="project-num">05</span>
       <div class="project-info">
-        <a href="https://koyunsuk.github.io/foursigns/" target="_blank" class="project-card">
         <span class="project-status status-done">완료</span>
         <p class="project-name">포사인스 아르카나 타로 앱</p>
         <p class="project-desc">AI 타로 웹앱. TTS, 애니메이션 마스코트 호냥이, 플랫폼별 조건부 콘텐츠 생성 포함.</p>
-        <div class="project-tags">
-          <span class="tag">HTML/JS</span><span class="tag">AI</span><span class="tag">TTS</span>
-        </div>
+        <div class="project-tags"><span class="tag">HTML/JS</span><span class="tag">AI</span><span class="tag">TTS</span></div>
       </div>
       <span class="project-arrow">→</span>
     </a>
   </div>
 </section>
 
-<!-- BLOG -->
 <section id="blog">
   <div class="section-header">
     <span class="section-num">04</span>
@@ -461,11 +370,10 @@ footer {
     </div>
   </div>
   <div class="blog-more">
-    <a href="https://blog.naver.com" target="_blank" class="btn-outline">네이버 블로그에서 더 보기</a>
+    <a href="https://blog.naver.com/ieu" target="_blank" class="btn-outline">네이버 블로그에서 더 보기</a>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="section-header">
     <span class="section-num">05</span>
@@ -479,27 +387,23 @@ footer {
     </div>
     <div class="social-links">
       <a href="https://youtube.com/@ieu" target="_blank" class="social-link">
-        <span class="social-platform">YOUTUBE</span>
-        <span class="social-handle">@ieu</span>
+        <span class="social-platform">YOUTUBE</span><span class="social-handle">@ieu</span>
       </a>
       <a href="https://instagram.com/ieu" target="_blank" class="social-link">
-        <span class="social-platform">INSTAGRAM</span>
-        <span class="social-handle">@ieu</span>
+        <span class="social-platform">INSTAGRAM</span><span class="social-handle">@ieu</span>
       </a>
       <a href="https://blog.naver.com/ieu" target="_blank" class="social-link">
-        <span class="social-platform">NAVER BLOG</span>
-        <span class="social-handle">blog.naver.com/ieu</span>
+        <span class="social-platform">NAVER BLOG</span><span class="social-handle">blog.naver.com/ieu</span>
       </a>
       <a href="https://github.com/koyunsuk" target="_blank" class="social-link">
-        <span class="social-platform">GITHUB</span>
-        <span class="social-handle">github.com/koyunsuk</span>
+        <span class="social-platform">GITHUB</span><span class="social-handle">github.com/koyunsuk</span>
       </a>
     </div>
   </div>
 </section>
 
 <footer>
-  <span>© 2026 Ko yunsuk — IEU.CO.KR</span>
+  <span>© 2026 Ko Yunsuk — IEU.CO.KR</span>
   <span>Built with care · Incheon, Korea</span>
 </footer>
 
