@@ -74,6 +74,8 @@ img{max-width:100%;height:auto}
 .ieu-foot a{color:#aab6d1;text-decoration:none}
 .ieu-foot .tl{font-family:var(--mono);letter-spacing:.14em;font-size:11px}
 #ieu-hidden{display:none}
+.ieu-empty-static{display:none}
+.no-items + .ieu-empty-static{display:block}
 @media (max-width:900px){.ieu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:600px){.ieu-grid{grid-template-columns:minmax(0,1fr)}.ieu-links a:not(.cta){display:none}.ieu-article{padding:26px 20px;border-radius:18px}.ieu-hero{padding:48px 0 56px}}
 ]]></b:skin>
@@ -150,6 +152,7 @@ img{max-width:100%;height:auto}
     </b:includable>
   </b:widget>
 </b:section>
+<div class='ieu-empty ieu-empty-static'>아직 올라온 글이 없습니다. 첫 글을 준비하고 있어요.</div>
 </div></main>
 
 <footer class='ieu-foot'><div class='wrap'>
