@@ -4,7 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IEU — [이음유니언] 고윤숙 포트폴리오</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta name="description" content="이음유니언(IEU) 고윤숙 — 기획부터 디자인, 개발, 배포까지 웹·앱 서비스를 만드는 프리랜서 개발자">
+<meta property="og:title" content="IEU 이음유니언 — 고윤숙 포트폴리오">
+<meta property="og:description" content="아이디어를 실제로 작동하는 서비스로. Flutter · Firebase · Web App">
+<meta property="og:image" content="assets/moriknit-web.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23C4713A'/%3E%3Ccircle cx='24' cy='32' r='11' fill='none' stroke='white' stroke-width='5'/%3E%3Ccircle cx='40' cy='32' r='11' fill='none' stroke='white' stroke-width='5'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --cream: #F8F5F0;
@@ -13,128 +18,190 @@
   --mid: #555;
   --light: #999;
   --accent: #C4713A;
+  --accent-dark: #A85C2A;
   --accent-light: #F0E4D6;
   --border: #E8E2D9;
   --mono: 'DM Mono', monospace;
   --serif: 'Playfair Display', serif;
   --sans: 'Noto Sans KR', sans-serif;
+  --shadow: 0 1px 2px rgba(26,26,26,.04), 0 12px 32px rgba(26,26,26,.08);
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { background: var(--warm-white); color: var(--charcoal); font-family: var(--sans); font-weight: 300; }
+img { max-width: 100%; display: block; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* NAV */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 1.2rem 3rem;
+  padding: 1rem 3rem;
   background: rgba(253,252,250,0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
-.nav-logo { font-family: var(--mono); font-size: 1rem; letter-spacing: 0.15em; color: var(--accent); }
+.nav-logo { display: flex; align-items: center; gap: .7rem; text-decoration: none; }
+.nav-logo svg { width: 34px; height: 34px; flex: none; }
+.nav-logo b { font-family: var(--mono); font-weight: 500; font-size: .95rem; letter-spacing: .15em; color: var(--charcoal); }
+.nav-logo small { display: block; font-family: var(--sans); font-size: .68rem; color: var(--light); letter-spacing: .05em; }
 .nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a { text-decoration: none; color: var(--mid); font-size: 0.85rem; letter-spacing: 0.05em; transition: color 0.2s; }
 .nav-links a:hover { color: var(--accent); }
+.nav-right { display: flex; align-items: center; gap: 1.2rem; }
 .nav-socials { display: flex; gap: 1rem; }
 .nav-socials a { color: var(--light); font-size: 0.8rem; text-decoration: none; font-family: var(--mono); transition: color 0.2s; }
 .nav-socials a:hover { color: var(--accent); }
-.hero {
-  min-height: 100vh;
-  display: grid; grid-template-columns: 1fr 1fr;
-  padding-top: 5rem;
+.nav-cta { padding: .55rem 1.1rem; background: var(--charcoal); color: #fff; text-decoration: none; font-size: .8rem; font-weight: 500; transition: background .2s; white-space: nowrap; }
+.nav-cta:hover { background: var(--accent); }
+
+/* SECTIONS */
+section { padding: 6rem 5rem; }
+.section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 3.5rem; }
+.section-num { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); }
+.section-title { font-family: var(--serif); font-size: 2.5rem; }
+.section-line { flex: 1; height: 1px; background: var(--border); }
+
+/* HERO */
+section.hero {
+  display: grid; grid-template-columns: 1fr 1.05fr;
+  padding: 4.6rem 0 0;
+  border-bottom: 1px solid var(--border);
 }
+section.hero > *, .projects-feature > *, .projects-list > *, .about-grid > *, .contact-grid > * { min-width: 0; }
 .hero-left {
   display: flex; flex-direction: column; justify-content: center;
-  padding: 5rem 4rem 5rem 5rem;
-  border-right: 1px solid var(--border);
+  padding: 5.5rem 4rem 5rem 5rem;
 }
-.hero-tag { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); letter-spacing: 0.15em; margin-bottom: 1.5rem; }
+.hero-tag { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); letter-spacing: 0.15em; margin-bottom: 1.5rem; display: flex; align-items: center; gap: .6rem; }
+.hero-tag::before { content: ""; width: 28px; height: 1px; background: var(--accent); }
 .hero-name { font-family: var(--serif); font-size: clamp(3rem, 5vw, 5rem); line-height: 1.1; margin-bottom: 1.5rem; }
 .hero-name span { color: var(--accent); }
-.hero-desc { font-size: 1rem; color: var(--mid); line-height: 1.8; max-width: 440px; margin-bottom: 2.5rem; }
+.hero-desc { font-size: 1.02rem; color: var(--mid); line-height: 1.85; max-width: 460px; margin-bottom: 2.2rem; }
 .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
 .btn-primary {
-  padding: 0.8rem 2rem; background: var(--accent); color: white;
-  border: none; font-family: var(--sans); font-size: 0.85rem; cursor: pointer;
+  padding: 0.85rem 2rem; background: var(--accent); color: white;
+  border: none; font-family: var(--sans); font-size: 0.85rem; font-weight: 500; cursor: pointer;
   text-decoration: none; display: inline-block; transition: all 0.2s;
 }
-.btn-primary:hover { background: #A85C2A; }
+.btn-primary:hover { background: var(--accent-dark); }
 .btn-outline {
-  padding: 0.8rem 2rem; background: transparent; color: var(--charcoal);
+  padding: 0.85rem 2rem; background: transparent; color: var(--charcoal);
   border: 1px solid var(--border); font-family: var(--sans); font-size: 0.85rem;
   cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s;
 }
 .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+.hero-stats { display: grid; grid-template-columns: repeat(4, auto); justify-content: start; gap: 2.4rem; margin-top: 3rem; padding-top: 1.8rem; border-top: 1px solid var(--border); }
+.stat-num { font-family: var(--serif); font-size: 2rem; color: var(--accent); display: block; line-height: 1; }
+.stat-label { font-family: var(--mono); font-size: 0.68rem; color: var(--light); letter-spacing: 0.12em; margin-top: 0.5rem; }
+
 .hero-right {
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
-  padding: 5rem 4rem;
-  background: var(--cream);
   position: relative; overflow: hidden;
+  background: var(--cream);
+  border-left: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  padding: 5rem 4rem 6rem 3.5rem;
+  min-height: 560px;
 }
 .hero-right::before {
   content: 'IEU';
   font-family: var(--serif); font-size: 14rem; color: var(--border);
-  position: absolute; right: -1rem; bottom: -2rem;
+  position: absolute; right: -1rem; bottom: -3rem;
   line-height: 1; user-select: none;
 }
-.hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; position: relative; z-index: 1; }
-.stat { text-align: center; }
-.stat-num { font-family: var(--serif); font-size: 3rem; color: var(--accent); display: block; }
-.stat-label { font-size: 0.8rem; color: var(--light); letter-spacing: 0.1em; margin-top: 0.3rem; }
-section { padding: 6rem 5rem; }
-.section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 4rem; }
-.section-num { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); }
-.section-title { font-family: var(--serif); font-size: 2.5rem; }
-.section-line { flex: 1; height: 1px; background: var(--border); }
+.hero-right::after {
+  content: ""; position: absolute; inset: 0;
+  background-image: radial-gradient(var(--border) 1px, transparent 1px);
+  background-size: 22px 22px; opacity: .6; pointer-events: none;
+}
+.mock { position: relative; z-index: 1; width: 100%; max-width: 560px; }
+.browser { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+.browser-bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-bottom: 1px solid var(--border); background: #fbfaf7; }
+.browser-bar i { width: 9px; height: 9px; border-radius: 50%; background: #e3ddd3; flex: none; }
+.browser-bar span { margin-left: 10px; font-family: var(--mono); font-size: .68rem; color: var(--light); background: #fff; border: 1px solid var(--border); border-radius: 5px; padding: 2px 10px; flex: 1; max-width: 260px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.browser img { aspect-ratio: 16/10; object-fit: cover; object-position: top; width: 100%; height: auto; }
+.phone { position: absolute; right: -5%; bottom: -16%; width: 30%; max-width: 168px; border: 7px solid #1a1a1a; border-radius: 26px; overflow: hidden; background: #000; box-shadow: var(--shadow); }
+.phone img { aspect-ratio: 390/760; object-fit: cover; object-position: top; width: 100%; height: auto; }
+.mock-caption { position: absolute; left: 0; bottom: -2.4rem; font-family: var(--mono); font-size: .68rem; color: var(--light); letter-spacing: .08em; }
+
 #about { background: var(--cream); }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
 .about-text p { font-size: 1rem; color: var(--mid); line-height: 1.9; margin-bottom: 1.2rem; }
-.about-info { display: flex; flex-direction: column; gap: 1.5rem; }
-.info-item { padding: 1.5rem; background: white; border: 1px solid var(--border); }
+.about-text .quote { font-family: var(--serif); font-size: 1.35rem; color: var(--charcoal); line-height: 1.5; margin: 2rem 0 0; padding-left: 1.2rem; border-left: 2px solid var(--accent); }
+.about-info { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.info-item { padding: 1.4rem; background: white; border: 1px solid var(--border); }
 .info-label { font-family: var(--mono); font-size: 0.7rem; color: var(--light); letter-spacing: 0.1em; margin-bottom: 0.5rem; }
 .info-value { font-size: 0.95rem; color: var(--charcoal); font-weight: 500; }
+.process { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, 1fr); background: white; border: 1px solid var(--border); }
+.process div { padding: 1.2rem; border-right: 1px solid var(--border); }
+.process div:last-child { border-right: none; }
+.process b { display: block; font-family: var(--mono); font-size: .7rem; color: var(--accent); letter-spacing: .1em; margin-bottom: .35rem; font-weight: 500; }
+.process span { font-size: .85rem; font-weight: 500; }
+
 #skills { border-top: 1px solid var(--border); }
-.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-.skill-card { padding: 2rem; border: 1px solid var(--border); transition: all 0.2s; }
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.skill-card { padding: 2rem; border: 1px solid var(--border); background: #fff; transition: all 0.2s; }
 .skill-card:hover { border-color: var(--accent); background: var(--accent-light); }
-.skill-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+.skill-icon { width: 44px; height: 44px; display: grid; place-items: center; background: var(--accent-light); color: var(--accent); margin-bottom: 1.2rem; }
+.skill-card:hover .skill-icon { background: #fff; }
+.skill-icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .skill-name { font-weight: 500; font-size: 0.95rem; margin-bottom: 0.8rem; }
 .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .tag { font-family: var(--mono); font-size: 0.7rem; padding: 0.2rem 0.6rem; background: var(--cream); color: var(--mid); border: 1px solid var(--border); }
+
+/* PROJECTS */
 #projects { background: var(--cream); border-top: 1px solid var(--border); }
-.projects-list { display: flex; flex-direction: column; gap: 1.5rem; }
+.projects-feature { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.projects-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .project-card {
-  display: grid; grid-template-columns: auto 1fr auto;
-  align-items: center; gap: 2rem;
-  padding: 2rem 2.5rem; background: white; border: 1px solid var(--border);
-  text-decoration: none; color: inherit; transition: all 0.2s;
+  display: flex; flex-direction: column;
+  background: white; border: 1px solid var(--border);
+  text-decoration: none; color: inherit; transition: all 0.25s;
 }
-.project-card:hover { border-color: var(--accent); transform: translateX(4px); }
-.project-num { font-family: var(--mono); font-size: 0.75rem; color: var(--light); }
-.project-name { font-family: var(--serif); font-size: 1.3rem; margin-bottom: 0.4rem; }
-.project-desc { font-size: 0.85rem; color: var(--mid); line-height: 1.6; }
-.project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.8rem; }
-.project-arrow { font-size: 1.2rem; color: var(--light); transition: all 0.2s; }
-.project-card:hover .project-arrow { color: var(--accent); transform: translateX(4px); }
-.project-status { font-family: var(--mono); font-size: 0.7rem; padding: 0.2rem 0.8rem; border: 1px solid; display: inline-block; margin-bottom: 0.5rem; }
+.project-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: var(--shadow); }
+.project-thumb { position: relative; aspect-ratio: 16/10; overflow: hidden; border-bottom: 1px solid var(--border); background: var(--cream); }
+.project-thumb > img:first-child { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .5s; }
+.project-card:hover .project-thumb > img:first-child { transform: scale(1.03); }
+.project-thumb .badge-icon { position: absolute; left: 1rem; bottom: 1rem; width: 52px; height: 52px; border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,.18); }
+.cover { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.4rem; color: #fff; position: relative; }
+.cover::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.18) 1px, transparent 1px); background-size: 16px 16px; }
+.cover b { position: relative; font-family: var(--serif); font-size: 1.9rem; line-height: 1; }
+.cover small { position: relative; font-family: var(--mono); font-size: .66rem; letter-spacing: .12em; opacity: .85; margin-top: .5rem; }
+.cover.green { background: linear-gradient(135deg, #2f6b4f, #4d8f6a); }
+.cover.blue { background: linear-gradient(135deg, #2c3e66, #4a6aa8); }
+.cover.plum { background: linear-gradient(135deg, #5a2f52, #8a4d7a); }
+.project-info { padding: 1.5rem 1.6rem 1.7rem; display: flex; flex-direction: column; flex: 1; }
+.project-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: .7rem; }
+.project-num { font-family: var(--mono); font-size: 0.72rem; color: var(--light); }
+.project-name { font-family: var(--serif); font-size: 1.3rem; margin-bottom: 0.5rem; }
+.project-desc { font-size: 0.85rem; color: var(--mid); line-height: 1.7; }
+.project-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: auto; padding-top: 1rem; }
+.project-status { font-family: var(--mono); font-size: 0.7rem; padding: 0.2rem 0.8rem; border: 1px solid; display: inline-block; }
 .status-live { color: #2E7D32; border-color: #2E7D32; background: #F1F8E9; }
 .status-dev { color: var(--accent); border-color: var(--accent); background: var(--accent-light); }
 .status-done { color: var(--mid); border-color: var(--border); }
+
 #blog { border-top: 1px solid var(--border); }
-.blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-.blog-card { padding: 2rem; border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; }
+.blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.blog-card { padding: 2rem; border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; background: #fff; display: grid; grid-template-columns: 64px 1fr; gap: 1.4rem; }
 .blog-card:hover { border-color: var(--accent); }
-.blog-date { font-family: var(--mono); font-size: 0.7rem; color: var(--light); margin-bottom: 0.8rem; }
-.blog-title { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 0.8rem; line-height: 1.4; }
+.blog-mark { width: 64px; height: 64px; background: var(--cream); border: 1px solid var(--border); display: grid; place-items: center; font-family: var(--mono); font-size: .62rem; color: var(--accent); letter-spacing: .05em; text-align: center; line-height: 1.3; }
+.blog-date { font-family: var(--mono); font-size: 0.7rem; color: var(--light); margin-bottom: 0.6rem; }
+.blog-title { font-family: var(--serif); font-size: 1.15rem; margin-bottom: 0.7rem; line-height: 1.45; }
 .blog-excerpt { font-size: 0.85rem; color: var(--mid); line-height: 1.7; }
-.blog-category { font-family: var(--mono); font-size: 0.7rem; color: var(--accent); margin-top: 1rem; }
+.blog-category { font-family: var(--mono); font-size: 0.7rem; color: var(--accent); margin-top: 0.9rem; }
 .blog-more { text-align: center; margin-top: 3rem; }
-#contact { background: var(--charcoal); color: white; border-top: 1px solid var(--border); }
+
+#contact { background: var(--charcoal); color: white; border-top: 1px solid var(--border); position: relative; overflow: hidden; }
+#contact::after { content: "IEU"; position: absolute; right: -1rem; bottom: -4rem; font-family: var(--serif); font-size: 16rem; color: #222; line-height: 1; pointer-events: none; }
+#contact > * { position: relative; z-index: 1; }
 #contact .section-title { color: white; }
 #contact .section-line { background: #333; }
 #contact .section-num { color: var(--accent); }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+.contact-text h3 { font-family: var(--serif); font-size: 2rem; line-height: 1.35; font-weight: 400; margin-bottom: 1.2rem; }
 .contact-text p { color: #999; line-height: 1.9; font-size: 1rem; }
-.contact-email { font-family: var(--serif); font-size: 1.5rem; color: var(--accent); margin-top: 1.5rem; display: block; text-decoration: none; }
+.contact-email { font-family: var(--serif); font-size: 1.5rem; color: var(--accent); margin-top: 1.5rem; display: inline-block; text-decoration: none; }
 .contact-email:hover { text-decoration: underline; }
 .social-links { display: flex; flex-direction: column; gap: 1rem; }
 .social-link {
@@ -143,44 +210,70 @@ section { padding: 6rem 5rem; }
   text-decoration: none; color: white; transition: all 0.2s;
 }
 .social-link:hover { border-color: var(--accent); background: rgba(196,113,58,0.1); }
-.social-platform { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); width: 90px; }
-.social-handle { font-size: 0.9rem; color: #ccc; }
+.social-platform { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); width: 90px; flex: none; }
+.social-handle { font-size: 0.9rem; color: #ccc; flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.social-link::after { content: "→"; color: #555; transition: color .2s; }
+.social-link:hover::after { color: var(--accent); }
 footer {
-  background: #111; color: #555;
+  background: #111; color: #666;
   padding: 2rem 5rem; font-family: var(--mono); font-size: 0.75rem;
-  display: flex; justify-content: space-between; align-items: center;
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
   border-top: 1px solid #222;
 }
+footer .brand { display: flex; align-items: center; gap: .6rem; color: #888; }
+footer svg { width: 22px; height: 22px; flex: none; }
+
+@media (max-width: 1100px) {
+  .nav-socials { display: none; }
+  section.hero { grid-template-columns: 1fr; }
+  .hero-right { border-left: none; border-top: 1px solid var(--border); padding: 4rem 4rem 6rem; min-height: 0; }
+  .projects-list { grid-template-columns: 1fr 1fr; }
+  .about-grid { gap: 3rem; }
+}
 @media (max-width: 768px) {
-  nav { padding: 1rem 1.5rem; }
+  nav { padding: .9rem 1.25rem; }
   .nav-links { display: none; }
-  .hero { grid-template-columns: 1fr; }
-  .hero-left { padding: 6rem 1.5rem 3rem; }
-  .hero-right { padding: 3rem 1.5rem; }
+  .nav-logo small { display: none; }
+  .hero-left { padding: 4rem 1.5rem 3rem; }
+  .hero-stats { grid-template-columns: repeat(2, auto); gap: 1.6rem 2.5rem; }
+  .hero-right { padding: 3rem 2.2rem 5rem 1.5rem; }
   .hero-right::before { font-size: 8rem; }
+  .phone { right: -4%; border-width: 5px; border-radius: 18px; }
   section { padding: 4rem 1.5rem; }
+  .section-title { font-size: 2rem; }
   .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .skills-grid { grid-template-columns: 1fr; }
-  .blog-grid { grid-template-columns: 1fr; }
-  .project-card { grid-template-columns: 1fr; }
-  .project-num, .project-arrow { display: none; }
-  footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+  .about-info { grid-template-columns: 1fr; }
+  .process { grid-template-columns: 1fr 1fr; }
+  .process div:nth-child(2) { border-right: none; }
+  .process div:nth-child(-n+2) { border-bottom: 1px solid var(--border); }
+  .skills-grid, .projects-feature, .projects-list, .blog-grid { grid-template-columns: 1fr; }
+  .blog-card { grid-template-columns: 1fr; }
+  .blog-mark { display: none; }
+  .contact-text h3 { font-size: 1.6rem; }
+  footer { flex-direction: column; text-align: center; padding: 1.5rem; }
 }
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.hero-tag, .hero-name, .hero-desc, .hero-cta { animation: fadeUp 0.6s ease both; }
-.hero-tag { animation-delay: 0.1s; }
-.hero-name { animation-delay: 0.2s; }
-.hero-desc { animation-delay: 0.3s; }
-.hero-cta { animation-delay: 0.4s; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-tag, .hero-name, .hero-desc, .hero-cta, .hero-stats, .mock { animation: fadeUp 0.6s ease both; }
+  .hero-tag { animation-delay: 0.1s; }
+  .hero-name { animation-delay: 0.2s; }
+  .hero-desc { animation-delay: 0.3s; }
+  .hero-cta { animation-delay: 0.4s; }
+  .hero-stats { animation-delay: 0.5s; }
+  .mock { animation-delay: 0.35s; }
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-logo">IEU.CO.KR</div>
+  <a href="#" class="nav-logo" aria-label="IEU 홈">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#C4713A"/><circle cx="24" cy="32" r="11" fill="none" stroke="#fff" stroke-width="5"/><circle cx="40" cy="32" r="11" fill="none" stroke="#fff" stroke-width="5"/></svg>
+    <span><b>IEU.CO.KR</b><small>이음유니언</small></span>
+  </a>
   <ul class="nav-links">
     <li><a href="#about">소개</a></li>
     <li><a href="#skills">기술</a></li>
@@ -188,11 +281,14 @@ footer {
     <li><a href="#blog">블로그</a></li>
     <li><a href="#contact">연락처</a></li>
   </ul>
-  <div class="nav-socials">
-    <a href="https://youtube.com/@ieu" target="_blank">YT</a>
-    <a href="https://instagram.com/ieu" target="_blank">IG</a>
-    <a href="https://blog.naver.com/ieu" target="_blank">NB</a>
-    <a href="https://github.com/koyunsuk" target="_blank">GH</a>
+  <div class="nav-right">
+    <div class="nav-socials">
+      <a href="https://youtube.com/@ieu" target="_blank" rel="noopener">YT</a>
+      <a href="https://instagram.com/ieu" target="_blank" rel="noopener">IG</a>
+      <a href="https://blog.naver.com/ieu" target="_blank" rel="noopener">NB</a>
+      <a href="https://github.com/koyunsuk" target="_blank" rel="noopener">GH</a>
+    </div>
+    <a href="#contact" class="nav-cta">프로젝트 문의</a>
   </div>
 </nav>
 
@@ -205,13 +301,21 @@ footer {
       <a href="#projects" class="btn-primary">프로젝트 보기</a>
       <a href="#contact" class="btn-outline">연락하기</a>
     </div>
-  </div>
-  <div class="hero-right">
     <div class="hero-stats">
       <div class="stat"><span class="stat-num">5+</span><p class="stat-label">PROJECTS</p></div>
       <div class="stat"><span class="stat-num">3+</span><p class="stat-label">YEARS EXP</p></div>
       <div class="stat"><span class="stat-num">Full</span><p class="stat-label">STACK</p></div>
       <div class="stat"><span class="stat-num">KR</span><p class="stat-label">BASED</p></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="mock">
+      <div class="browser">
+        <div class="browser-bar"><i></i><i></i><i></i><span>koyunsuk.github.io/moriknit</span></div>
+        <img src="assets/moriknit-web.jpg" alt="모리니트 웹 화면 — 뜨개질의 모든 것, MoriKnit" width="1200" height="750">
+      </div>
+      <div class="phone"><img src="assets/foursigns-mobile.jpg" alt="아르카나 타로 모바일 화면" width="390" height="844"></div>
+      <p class="mock-caption">MORIKNIT WEB · ARCANA TAROT MOBILE</p>
     </div>
   </div>
 </section>
@@ -227,12 +331,19 @@ footer {
       <p>웹과 앱 개발을 중심으로 기획부터 디자인, 구현, 배포까지 혼자서 진행하는 프리랜서 개발자입니다.</p>
       <p>Flutter, Firebase, React 등을 활용해 실제 사용자가 쓸 수 있는 서비스를 만드는 것을 좋아합니다. 임상 기술 플랫폼, 예술 협회 관리 시스템, 뜨개질 플랫폼 등 다양한 분야의 프로젝트를 진행해왔습니다.</p>
       <p>코드를 작성하는 것만큼이나 아이디어를 현실화하는 과정 자체를 즐깁니다.</p>
+      <p class="quote">사람과 기술을 잇는 일,<br>이음유니언입니다.</p>
     </div>
     <div class="about-info">
       <div class="info-item"><p class="info-label">LOCATION</p><p class="info-value">인천, 대한민국</p></div>
       <div class="info-item"><p class="info-label">FOCUS</p><p class="info-value">Flutter · Firebase · Web App</p></div>
       <div class="info-item"><p class="info-label">AVAILABILITY</p><p class="info-value">프리랜서 프로젝트 수락 중</p></div>
       <div class="info-item"><p class="info-label">GITHUB</p><p class="info-value">github.com/koyunsuk</p></div>
+      <div class="process" aria-label="작업 과정">
+        <div><b>01 PLAN</b><span>기획 · 화면 설계</span></div>
+        <div><b>02 DESIGN</b><span>UI/UX 디자인</span></div>
+        <div><b>03 BUILD</b><span>웹 · 앱 개발</span></div>
+        <div><b>04 LAUNCH</b><span>배포 · 운영</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -245,32 +356,32 @@ footer {
   </div>
   <div class="skills-grid">
     <div class="skill-card">
-      <div class="skill-icon">📱</div>
+      <div class="skill-icon"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></div>
       <p class="skill-name">모바일 · 크로스플랫폼</p>
       <div class="skill-tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Android</span><span class="tag">iOS</span></div>
     </div>
     <div class="skill-card">
-      <div class="skill-icon">🌐</div>
+      <div class="skill-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.8 3 2.8 16 0 19M12 2.5c-2.8 3-2.8 16 0 19"/></svg></div>
       <p class="skill-name">웹 프론트엔드</p>
       <div class="skill-tags"><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">Next.js</span></div>
     </div>
     <div class="skill-card">
-      <div class="skill-icon">🔥</div>
+      <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M7 18a4.5 4.5 0 0 1-.6-9 6 6 0 0 1 11.5 1.5A3.8 3.8 0 0 1 17.5 18z"/></svg></div>
       <p class="skill-name">백엔드 · 클라우드</p>
       <div class="skill-tags"><span class="tag">Firebase</span><span class="tag">Firestore</span><span class="tag">Node.js</span><span class="tag">NestJS</span></div>
     </div>
     <div class="skill-card">
-      <div class="skill-icon">🗄️</div>
+      <div class="skill-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
       <p class="skill-name">데이터베이스</p>
       <div class="skill-tags"><span class="tag">Firestore</span><span class="tag">PostgreSQL</span><span class="tag">MySQL</span></div>
     </div>
     <div class="skill-card">
-      <div class="skill-icon">🎨</div>
+      <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg></div>
       <p class="skill-name">기획 · 디자인</p>
       <div class="skill-tags"><span class="tag">Figma</span><span class="tag">Wireframe</span><span class="tag">UI/UX</span></div>
     </div>
     <div class="skill-card">
-      <div class="skill-icon">⚙️</div>
+      <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></div>
       <p class="skill-name">개발 도구</p>
       <div class="skill-tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">VS Code</span><span class="tag">Flutter SDK</span></div>
     </div>
@@ -283,56 +394,56 @@ footer {
     <h2 class="section-title">프로젝트</h2>
     <div class="section-line"></div>
   </div>
-  <div class="projects-list">
-    <a href="https://koyunsuk.github.io/moriknit/" target="_blank" class="project-card">
-      <span class="project-num">01</span>
+  <div class="projects-feature">
+    <a href="https://koyunsuk.github.io/moriknit/" target="_blank" rel="noopener" class="project-card">
+      <div class="project-thumb">
+        <img src="assets/moriknit-web.jpg" alt="모리니트 웹 메인 화면" loading="lazy" width="1200" height="750">
+        <img class="badge-icon" src="assets/moriknit-icon.png" alt="" width="52" height="52">
+      </div>
       <div class="project-info">
-        <span class="project-status status-dev">개발중</span>
+        <div class="project-top"><span class="project-status status-dev">개발중</span><span class="project-num">01</span></div>
         <p class="project-name">MoriKnit 모리니트</p>
         <p class="project-desc">뜨개질 올인원 플랫폼. 프로젝트 기록, 게이지 계산, 도안 제작, 스와치 관리, 커뮤니티까지. Flutter + Firebase로 웹·앱 동시 출시 예정.</p>
         <div class="project-tags"><span class="tag">Flutter</span><span class="tag">Firebase</span><span class="tag">Dart</span><span class="tag">Firestore</span></div>
       </div>
-      <span class="project-arrow">→</span>
     </a>
-    <a href="#" class="project-card">
-      <span class="project-num">02</span>
+    <a href="https://koyunsuk.github.io/foursigns/" target="_blank" rel="noopener" class="project-card">
+      <div class="project-thumb"><img src="assets/foursigns-web.jpg" alt="아르카나 타로 웹 메인 화면" loading="lazy" width="1200" height="750"></div>
       <div class="project-info">
-        <span class="project-status status-done">납품완료</span>
-        <p class="project-name">GreenTag Android MVP</p>
-        <p class="project-desc">실제 고객사에 납품한 안드로이드 MVP 앱. 기획부터 개발, 배포까지 단독 진행.</p>
-        <div class="project-tags"><span class="tag">Android</span><span class="tag">MVP</span></div>
-      </div>
-      <span class="project-arrow">→</span>
-    </a>
-    <a href="#" class="project-card">
-      <span class="project-num">03</span>
-      <div class="project-info">
-        <span class="project-status status-done">완료</span>
-        <p class="project-name">FuncMed 기능의학 클리닉 AI 플랫폼</p>
-        <p class="project-desc">HQ 관리자·지점장·현장 태블릿 3종 인터페이스. AI 모델 가이드, Firestore 스키마, API 20종 설계.</p>
-        <div class="project-tags"><span class="tag">React</span><span class="tag">Firebase</span><span class="tag">AI</span></div>
-      </div>
-      <span class="project-arrow">→</span>
-    </a>
-    <a href="#" class="project-card">
-      <span class="project-num">04</span>
-      <div class="project-info">
-        <span class="project-status status-done">완료</span>
-        <p class="project-name">KAFA 한국예술재단 플랫폼</p>
-        <p class="project-desc">3티어 예술 협회 플랫폼. KakaoTalk 단체채팅 AI 캘린더 추출 기능 포함. React Native + NestJS.</p>
-        <div class="project-tags"><span class="tag">React Native</span><span class="tag">NestJS</span><span class="tag">GPT-4o</span></div>
-      </div>
-      <span class="project-arrow">→</span>
-    </a>
-    <a href="https://koyunsuk.github.io/foursigns/" target="_blank" class="project-card">
-      <span class="project-num">05</span>
-      <div class="project-info">
-        <span class="project-status status-done">완료</span>
+        <div class="project-top"><span class="project-status status-done">완료</span><span class="project-num">05</span></div>
         <p class="project-name">포사인스 아르카나 타로 앱</p>
         <p class="project-desc">AI 타로 웹앱. TTS, 애니메이션 마스코트 호냥이, 플랫폼별 조건부 콘텐츠 생성 포함.</p>
         <div class="project-tags"><span class="tag">HTML/JS</span><span class="tag">AI</span><span class="tag">TTS</span></div>
       </div>
-      <span class="project-arrow">→</span>
+    </a>
+  </div>
+  <div class="projects-list">
+    <a href="#" class="project-card">
+      <div class="project-thumb"><div class="cover green"><b>GreenTag</b><small>ANDROID MVP · CLIENT WORK</small></div></div>
+      <div class="project-info">
+        <div class="project-top"><span class="project-status status-done">납품완료</span><span class="project-num">02</span></div>
+        <p class="project-name">GreenTag Android MVP</p>
+        <p class="project-desc">실제 고객사에 납품한 안드로이드 MVP 앱. 기획부터 개발, 배포까지 단독 진행.</p>
+        <div class="project-tags"><span class="tag">Android</span><span class="tag">MVP</span></div>
+      </div>
+    </a>
+    <a href="#" class="project-card">
+      <div class="project-thumb"><div class="cover blue"><b>FuncMed</b><small>CLINIC AI PLATFORM</small></div></div>
+      <div class="project-info">
+        <div class="project-top"><span class="project-status status-done">완료</span><span class="project-num">03</span></div>
+        <p class="project-name">FuncMed 기능의학 클리닉 AI 플랫폼</p>
+        <p class="project-desc">HQ 관리자·지점장·현장 태블릿 3종 인터페이스. AI 모델 가이드, Firestore 스키마, API 20종 설계.</p>
+        <div class="project-tags"><span class="tag">React</span><span class="tag">Firebase</span><span class="tag">AI</span></div>
+      </div>
+    </a>
+    <a href="#" class="project-card">
+      <div class="project-thumb"><div class="cover plum"><b>KAFA</b><small>ART FOUNDATION PLATFORM</small></div></div>
+      <div class="project-info">
+        <div class="project-top"><span class="project-status status-done">완료</span><span class="project-num">04</span></div>
+        <p class="project-name">KAFA 한국예술재단 플랫폼</p>
+        <p class="project-desc">3티어 예술 협회 플랫폼. KakaoTalk 단체채팅 AI 캘린더 추출 기능 포함. React Native + NestJS.</p>
+        <div class="project-tags"><span class="tag">React Native</span><span class="tag">NestJS</span><span class="tag">GPT-4o</span></div>
+      </div>
     </a>
   </div>
 </section>
@@ -345,32 +456,44 @@ footer {
   </div>
   <div class="blog-grid">
     <div class="blog-card">
-      <p class="blog-date">2026.03.19</p>
-      <h3 class="blog-title">Flutter 개발환경 세팅 완전정복 (Windows 11)</h3>
-      <p class="blog-excerpt">파티션 확장부터 Android Studio 설치, cmdline-tools, Visual Studio C++ 워크로드까지. 처음 세팅하면서 겪은 모든 에러와 해결 방법을 정리했습니다.</p>
-      <p class="blog-category">// DEV SETUP</p>
+      <div class="blog-mark">DEV<br>SETUP</div>
+      <div>
+        <p class="blog-date">2026.03.19</p>
+        <h3 class="blog-title">Flutter 개발환경 세팅 완전정복 (Windows 11)</h3>
+        <p class="blog-excerpt">파티션 확장부터 Android Studio 설치, cmdline-tools, Visual Studio C++ 워크로드까지. 처음 세팅하면서 겪은 모든 에러와 해결 방법을 정리했습니다.</p>
+        <p class="blog-category">// DEV SETUP</p>
+      </div>
     </div>
     <div class="blog-card">
-      <p class="blog-date">2026.03.19</p>
-      <h3 class="blog-title">github-csv-tools로 GitHub Issues 69개 일괄 등록하기</h3>
-      <p class="blog-excerpt">프로젝트 로드맵을 CSV로 만들어 GitHub Issues에 한번에 올리는 방법. 토큰 권한 에러 해결법 포함.</p>
-      <p class="blog-category">// GITHUB</p>
+      <div class="blog-mark">GIT<br>HUB</div>
+      <div>
+        <p class="blog-date">2026.03.19</p>
+        <h3 class="blog-title">github-csv-tools로 GitHub Issues 69개 일괄 등록하기</h3>
+        <p class="blog-excerpt">프로젝트 로드맵을 CSV로 만들어 GitHub Issues에 한번에 올리는 방법. 토큰 권한 에러 해결법 포함.</p>
+        <p class="blog-category">// GITHUB</p>
+      </div>
     </div>
     <div class="blog-card">
-      <p class="blog-date">2026.03.19</p>
-      <h3 class="blog-title">GitHub Projects Roadmap으로 간트차트 만들기</h3>
-      <p class="blog-excerpt">이슈 등록 → Projects 연동 → Auto-add 워크플로우 설정까지. 혼자 개발할 때 프로젝트 관리하는 방법.</p>
-      <p class="blog-category">// PROJECT MANAGEMENT</p>
+      <div class="blog-mark">PM</div>
+      <div>
+        <p class="blog-date">2026.03.19</p>
+        <h3 class="blog-title">GitHub Projects Roadmap으로 간트차트 만들기</h3>
+        <p class="blog-excerpt">이슈 등록 → Projects 연동 → Auto-add 워크플로우 설정까지. 혼자 개발할 때 프로젝트 관리하는 방법.</p>
+        <p class="blog-category">// PROJECT MANAGEMENT</p>
+      </div>
     </div>
     <div class="blog-card">
-      <p class="blog-date">곧 업로드</p>
-      <h3 class="blog-title">Flutter + Firebase 시작하기 — moriknit 개발일지 #1</h3>
-      <p class="blog-excerpt">FlutterFire 연동부터 Firebase Authentication 구현까지. 모리니트 Flutter 버전 개발을 시작합니다.</p>
-      <p class="blog-category">// FLUTTER</p>
+      <div class="blog-mark">FLUTTER</div>
+      <div>
+        <p class="blog-date">곧 업로드</p>
+        <h3 class="blog-title">Flutter + Firebase 시작하기 — moriknit 개발일지 #1</h3>
+        <p class="blog-excerpt">FlutterFire 연동부터 Firebase Authentication 구현까지. 모리니트 Flutter 버전 개발을 시작합니다.</p>
+        <p class="blog-category">// FLUTTER</p>
+      </div>
     </div>
   </div>
   <div class="blog-more">
-    <a href="https://blog.naver.com/ieu" target="_blank" class="btn-outline">네이버 블로그에서 더 보기</a>
+    <a href="https://blog.naver.com/ieu" target="_blank" rel="noopener" class="btn-outline">네이버 블로그에서 더 보기</a>
   </div>
 </section>
 
@@ -382,20 +505,21 @@ footer {
   </div>
   <div class="contact-grid">
     <div class="contact-text">
+      <h3>함께 만들 서비스가 있다면<br>편하게 이야기해 주세요.</h3>
       <p>프로젝트 협업, 프리랜서 의뢰, 또는 궁금한 점이 있으시면 언제든지 연락주세요.</p>
       <a href="mailto:koyunsuk@gmail.com" class="contact-email">koyunsuk@gmail.com</a>
     </div>
     <div class="social-links">
-      <a href="https://youtube.com/@ieu" target="_blank" class="social-link">
+      <a href="https://youtube.com/@ieu" target="_blank" rel="noopener" class="social-link">
         <span class="social-platform">YOUTUBE</span><span class="social-handle">@ieu</span>
       </a>
-      <a href="https://instagram.com/ieu" target="_blank" class="social-link">
+      <a href="https://instagram.com/ieu" target="_blank" rel="noopener" class="social-link">
         <span class="social-platform">INSTAGRAM</span><span class="social-handle">@ieu</span>
       </a>
-      <a href="https://blog.naver.com/ieu" target="_blank" class="social-link">
+      <a href="https://blog.naver.com/ieu" target="_blank" rel="noopener" class="social-link">
         <span class="social-platform">NAVER BLOG</span><span class="social-handle">blog.naver.com/ieu</span>
       </a>
-      <a href="https://github.com/koyunsuk" target="_blank" class="social-link">
+      <a href="https://github.com/koyunsuk" target="_blank" rel="noopener" class="social-link">
         <span class="social-platform">GITHUB</span><span class="social-handle">github.com/koyunsuk</span>
       </a>
     </div>
@@ -403,7 +527,7 @@ footer {
 </section>
 
 <footer>
-  <span>© 2026 Ko Yunsuk — IEU.CO.KR</span>
+  <span class="brand"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#C4713A"/><circle cx="24" cy="32" r="11" fill="none" stroke="#fff" stroke-width="5"/><circle cx="40" cy="32" r="11" fill="none" stroke="#fff" stroke-width="5"/></svg>© 2026 Ko Yunsuk — IEU.CO.KR</span>
   <span>Built with care · Incheon, Korea</span>
 </footer>
 
