@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>프로젝트 문의 — 이음유니언 IEU</title>
+<meta name="description" content="이음유니언(IEU)에 웹·앱 개발 프로젝트를 문의하세요. 영업일 기준 1~2일 안에 답변드립니다.">
+<meta name="theme-color" content="#070b18">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="projects/project.css">
+<style>
+.c-hero { position: relative; overflow: hidden; background: var(--night); color: #fff; padding: 120px 0 150px; }
+.c-hero::before { content: ""; position: absolute; width: 760px; height: 760px; right: -220px; top: -300px; background: radial-gradient(circle, rgba(25,195,255,.28), rgba(37,99,255,.1) 40%, transparent 70%); }
+.c-hero .wrap { position: relative; display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
+.c-hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800; letter-spacing: -.035em; line-height: 1.2; margin: .8rem 0 1rem; word-break: keep-all; }
+.c-hero h1 span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.c-hero p { color: #aab6d1; line-height: 1.8; max-width: 520px; word-break: keep-all; }
+.c-hero .knot { width: 190px; height: auto; flex: none; filter: drop-shadow(0 20px 40px rgba(25,195,255,.45)); }
+
+.c-body { position: relative; margin-top: -100px; padding-bottom: 40px; }
+.c-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; align-items: start; }
+.c-grid > * { min-width: 0; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 36px; box-shadow: 0 20px 60px -30px rgba(14,21,40,.35); }
+.card h2 { font-size: 1.3rem; font-weight: 800; letter-spacing: -.02em; margin-bottom: .4rem; }
+.card .hint { color: var(--sub); font-size: .9rem; margin-bottom: 1.6rem; }
+
+.form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 16px; }
+.field { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+.field.full { grid-column: 1 / -1; }
+.field label, .field legend { font-size: .84rem; font-weight: 700; color: var(--text); }
+.field label em, .field legend em { color: var(--blue); font-style: normal; margin-left: 2px; }
+.field input, .field select, .field textarea { font: inherit; font-size: .95rem; color: var(--text); padding: .8rem .95rem; border: 1px solid var(--line); border-radius: 12px; background: #f8fafd; transition: border-color .2s, box-shadow .2s; min-width: 0; width: 100%; }
+.field textarea { min-height: 160px; resize: vertical; line-height: 1.6; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 4px rgba(37,99,255,.12); background: #fff; }
+.field input[aria-invalid="true"], .field textarea[aria-invalid="true"] { border-color: #e5484d; }
+.err { font-size: .78rem; color: #d93036; min-height: 1em; }
+fieldset.field { border: none; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips input { position: absolute; opacity: 0; pointer-events: none; }
+.chips label { font-size: .86rem; font-weight: 600; color: #3c4a66; padding: .55rem .95rem; border-radius: 999px; border: 1px solid var(--line); background: #f8fafd; cursor: pointer; transition: all .15s; }
+.chips input:checked + label { background: var(--grad); color: #fff; border-color: transparent; box-shadow: 0 6px 16px -6px rgba(37,99,255,.6); }
+.chips input:focus-visible + label { outline: 2px solid var(--cyan); outline-offset: 2px; }
+.agree { display: flex; gap: .6rem; align-items: flex-start; font-size: .84rem; color: var(--sub); line-height: 1.6; }
+.agree input { margin-top: .25rem; width: 16px; height: 16px; accent-color: var(--blue); flex: none; }
+.submit-row { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 6px; }
+.submit { font: inherit; font-weight: 700; font-size: 1rem; color: #fff; background: var(--grad); border: none; border-radius: 999px; padding: 1rem 2rem; cursor: pointer; box-shadow: 0 12px 30px -10px rgba(37,99,255,.7); transition: transform .2s; }
+.submit:hover { transform: translateY(-2px); }
+.submit-row small { color: var(--mute); font-size: .8rem; }
+
+.side { display: flex; flex-direction: column; gap: 16px; }
+.side .card { padding: 28px; }
+.info-row { display: flex; flex-direction: column; gap: 4px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.info-row:last-child { border-bottom: none; padding-bottom: 0; }
+.info-row small { font-family: var(--mono); font-size: .66rem; letter-spacing: .12em; color: var(--mute); }
+.info-row b { font-size: 1rem; overflow-wrap: anywhere; }
+.copy-btn { align-self: flex-start; font: inherit; font-size: .78rem; font-weight: 600; color: var(--blue); background: #eaf1ff; border: none; border-radius: 999px; padding: .3rem .75rem; cursor: pointer; margin-top: 4px; }
+.flow { list-style: none; counter-reset: s; display: flex; flex-direction: column; gap: 14px; }
+.flow li { counter-increment: s; display: grid; grid-template-columns: 30px 1fr; gap: 10px; font-size: .9rem; color: var(--sub); line-height: 1.6; }
+.flow li::before { content: counter(s); width: 30px; height: 30px; border-radius: 10px; background: var(--grad); color: #fff; font-family: var(--mono); font-size: .8rem; display: grid; place-items: center; }
+.flow b { display: block; color: var(--text); }
+
+.done { display: none; text-align: center; padding: 20px 0 6px; }
+.done.show { display: block; }
+.done .ok { width: 64px; height: 64px; margin: 0 auto 1.2rem; border-radius: 20px; background: var(--grad); display: grid; place-items: center; color: #fff; font-size: 1.8rem; box-shadow: 0 14px 30px -10px rgba(37,99,255,.7); }
+.done h2 { margin-bottom: .6rem; }
+.done p { color: var(--sub); line-height: 1.75; max-width: 460px; margin: 0 auto 1.2rem; word-break: keep-all; }
+.done pre { text-align: left; white-space: pre-wrap; word-break: break-word; font-family: var(--sans); font-size: .85rem; line-height: 1.7; background: #f4f7fb; border: 1px solid var(--line); border-radius: 14px; padding: 16px; margin: 0 0 1rem; max-height: 280px; overflow: auto; }
+.done .row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.ghost { font: inherit; font-weight: 600; font-size: .9rem; color: var(--text); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: .8rem 1.4rem; cursor: pointer; text-decoration: none; }
+.ghost:hover { border-color: var(--blue); color: var(--blue); }
+
+@media (max-width: 900px) {
+  .c-grid { grid-template-columns: 1fr; }
+  .c-hero .knot { display: none; }
+}
+@media (max-width: 600px) {
+  .c-hero { padding: 100px 0 130px; }
+  .card { padding: 24px 20px; border-radius: 20px; }
+  .form { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a href="./" class="nav-logo"><img src="assets/ieu-logo-96.png" alt="" width="30" height="28"><b>IEU</b></a>
+  <ul class="nav-links"><li><a href="./#about">소개</a></li><li><a href="./#skills">기술</a></li><li><a href="./#projects">프로젝트</a></li><li><a href="./#blog">블로그</a></li></ul>
+  <a href="contact.html" class="nav-cta" aria-current="page">프로젝트 문의</a>
+</div></nav>
+
+<header class="c-hero"><div class="wrap">
+  <div>
+    <a href="./" class="back">← 홈으로</a>
+    <p class="kicker">CONTACT · PROJECT INQUIRY</p>
+    <h1>어떤 서비스를<br><span>함께 만들까요?</span></h1>
+    <p>아래 내용을 적어 주시면 문의 메일이 자동으로 작성됩니다. 기획 단계의 아이디어도 괜찮습니다. 영업일 기준 1~2일 안에 답변드립니다.</p>
+  </div>
+  <img class="knot" src="assets/ieu-logo.png" alt="" width="500" height="468">
+</div></header>
+
+<main class="c-body"><div class="wrap">
+  <div class="c-grid">
+    <div class="card">
+      <form id="inquiry" novalidate>
+        <div id="formArea">
+          <h2>프로젝트 문의서</h2>
+          <p class="hint"><em style="color:var(--blue);font-style:normal">*</em> 표시는 필수 항목입니다.</p>
+          <div class="form">
+            <div class="field">
+              <label for="f-name">이름 / 회사명<em>*</em></label>
+              <input id="f-name" name="name" autocomplete="name" placeholder="홍길동 / ㈜이음" required>
+              <span class="err" id="e-name"></span>
+            </div>
+            <div class="field">
+              <label for="f-email">회신받을 이메일<em>*</em></label>
+              <input id="f-email" name="email" type="email" autocomplete="email" placeholder="name@company.com" required>
+              <span class="err" id="e-email"></span>
+            </div>
+            <div class="field">
+              <label for="f-phone">연락처</label>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="010-0000-0000">
+            </div>
+            <div class="field">
+              <label for="f-budget">예상 예산</label>
+              <select id="f-budget" name="budget">
+                <option value="">선택 안 함</option>
+                <option>500만원 미만</option>
+                <option>500만 ~ 1,000만원</option>
+                <option>1,000만 ~ 3,000만원</option>
+                <option>3,000만원 이상</option>
+                <option>상담 후 결정</option>
+              </select>
+            </div>
+            <fieldset class="field full">
+              <legend>문의 유형<em>*</em></legend>
+              <div class="chips" id="types">
+                <input type="checkbox" id="t1" name="type" value="웹 개발"><label for="t1">웹 개발</label>
+                <input type="checkbox" id="t2" name="type" value="앱 개발 (Android/iOS)"><label for="t2">앱 개발 (Android/iOS)</label>
+                <input type="checkbox" id="t3" name="type" value="기획 · UI/UX 디자인"><label for="t3">기획 · UI/UX 디자인</label>
+                <input type="checkbox" id="t4" name="type" value="유지보수 · 기능 추가"><label for="t4">유지보수 · 기능 추가</label>
+                <input type="checkbox" id="t5" name="type" value="AI 기능 도입"><label for="t5">AI 기능 도입</label>
+                <input type="checkbox" id="t6" name="type" value="기타"><label for="t6">기타</label>
+              </div>
+              <span class="err" id="e-type"></span>
+            </fieldset>
+            <div class="field">
+              <label for="f-start">희망 시작 시기</label>
+              <select id="f-start" name="start">
+                <option value="">선택 안 함</option>
+                <option>바로 시작</option>
+                <option>1개월 이내</option>
+                <option>1~3개월 이내</option>
+                <option>아직 미정</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-ref">참고 링크</label>
+              <input id="f-ref" name="ref" type="url" placeholder="기획서·참고 서비스 주소">
+            </div>
+            <div class="field full">
+              <label for="f-msg">프로젝트 내용<em>*</em></label>
+              <textarea id="f-msg" name="message" placeholder="만들고 싶은 서비스, 주요 기능, 사용자, 현재 진행 상황 등을 편하게 적어 주세요." required></textarea>
+              <span class="err" id="e-msg"></span>
+            </div>
+            <div class="field full">
+              <label class="agree"><input type="checkbox" id="f-agree" name="agree">문의 답변을 위해 이름·이메일·연락처를 수집하며, 답변 후 지체 없이 파기합니다. 이에 동의합니다.<em>*</em></label>
+              <span class="err" id="e-agree"></span>
+            </div>
+            <div class="submit-row">
+              <small>버튼을 누르면 메일 앱이 열리고 문의 메일이 작성됩니다.</small>
+              <button type="submit" class="submit">문의 메일 작성하기 →</button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div class="done" id="done" role="status" aria-live="polite">
+        <div class="ok">✓</div>
+        <h2>문의 메일이 작성되었습니다</h2>
+        <p>열린 메일 앱에서 <b>보내기</b>를 눌러 주세요. 메일 앱이 열리지 않았다면 아래 내용을 복사해 <b>koyunsuk@gmail.com</b>으로 보내 주시면 됩니다.</p>
+        <pre id="preview"></pre>
+        <div class="row">
+          <button type="button" class="submit" id="copyAll">내용 복사</button>
+          <a class="ghost" id="reopen" href="#">메일 앱 다시 열기</a>
+          <button type="button" class="ghost" id="edit">수정하기</button>
+        </div>
+      </div>
+    </div>
+
+    <aside class="side">
+      <div class="card">
+        <h2>바로 연락하기</h2>
+        <div class="info-row"><small>EMAIL</small><b id="mailAddr">koyunsuk@gmail.com</b><button type="button" class="copy-btn" data-copy="koyunsuk@gmail.com">주소 복사</button></div>
+        <div class="info-row"><small>RESPONSE</small><b>영업일 기준 1~2일</b></div>
+        <div class="info-row"><small>LOCATION</small><b>인천, 대한민국</b></div>
+      </div>
+      <div class="card">
+        <h2>진행 과정</h2>
+        <ol class="flow" style="margin-top:1rem">
+          <li><span><b>문의 접수</b>보내주신 내용을 검토합니다.</span></li>
+          <li><span><b>상담</b>메일·통화로 요구사항을 정리합니다.</span></li>
+          <li><span><b>제안 · 견적</b>범위와 일정, 비용을 제안드립니다.</span></li>
+          <li><span><b>착수</b>합의 후 기획부터 시작합니다.</span></li>
+        </ol>
+      </div>
+    </aside>
+  </div>
+</div></main>
+
+<footer><div class="wrap">
+  <span class="brand"><img src="assets/ieu-logo-96.png" alt="" width="24" height="22">© 2026 IEU 이음유니언</span>
+  <span>connect to the world</span>
+</div></footer>
+
+<script>
+(function () {
+  var TO = 'koyunsuk@gmail.com';
+  var form = document.getElementById('inquiry');
+  var done = document.getElementById('done');
+  var mailUrl = '';
+  function el(n) { return form.elements.namedItem(n); }
+  function val(n) { return (el(n).value || '').trim(); }
+  var bodyText = '';
+
+  // 문의 유형: 프로젝트 페이지에서 ?type= 으로 들어오면 미리 선택
+  try {
+    var q = new URLSearchParams(location.search).get('type');
+    if (q) document.querySelectorAll('#types input').forEach(function (c) { if (c.value.indexOf(q) === 0) c.checked = true; });
+    var ref = new URLSearchParams(location.search).get('ref');
+    if (ref) document.getElementById('f-msg').value = '참고 프로젝트: ' + ref + '\n\n';
+  } catch (e) {}
+
+  function setErr(id, inputEl, msg) {
+    document.getElementById(id).textContent = msg || '';
+    if (inputEl) inputEl.setAttribute('aria-invalid', msg ? 'true' : 'false');
+    return !msg;
+  }
+
+  function validate() {
+    var name = val('name'), email = val('email'), msg = val('message');
+    var types = Array.prototype.filter.call(form.querySelectorAll('input[name=type]'), function (c) { return c.checked; });
+    var ok = true;
+    ok = setErr('e-name', el('name'), name ? '' : '이름 또는 회사명을 적어 주세요.') && ok;
+    ok = setErr('e-email', el('email'), /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? '' : '회신받을 이메일 주소를 정확히 적어 주세요.') && ok;
+    ok = setErr('e-type', null, types.length ? '' : '문의 유형을 하나 이상 골라 주세요.') && ok;
+    ok = setErr('e-msg', el('message'), msg.length >= 10 ? '' : '프로젝트 내용을 10자 이상 적어 주세요.') && ok;
+    ok = setErr('e-agree', null, el('agree').checked ? '' : '개인정보 수집에 동의해 주세요.') && ok;
+    return ok ? types.map(function (c) { return c.value; }) : null;
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var types = validate();
+    if (!types) { var first = form.querySelector('[aria-invalid=true]') || form.querySelector('#types input'); if (first) first.focus(); return; }
+    var subject = '[IEU 프로젝트 문의] ' + types[0] + (types.length > 1 ? ' 외 ' + (types.length - 1) + '건' : '') + ' — ' + val('name');
+    bodyText = [
+      '안녕하세요, 이음유니언에 프로젝트를 문의드립니다.',
+      '',
+      '■ 이름 / 회사명 : ' + val('name'),
+      '■ 회신 이메일 : ' + val('email'),
+      '■ 연락처 : ' + (val('phone') || '-'),
+      '■ 문의 유형 : ' + types.join(', '),
+      '■ 예상 예산 : ' + (val('budget') || '-'),
+      '■ 희망 시작 시기 : ' + (val('start') || '-'),
+      '■ 참고 링크 : ' + (val('ref') || '-'),
+      '',
+      '■ 프로젝트 내용',
+      val('message'),
+      '',
+      '— ieu.co.kr 문의 페이지에서 작성됨'
+    ].join('\n');
+    mailUrl = 'mailto:' + TO + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(bodyText);
+    document.getElementById('preview').textContent = '받는 사람: ' + TO + '\n제목: ' + subject + '\n\n' + bodyText;
+    document.getElementById('reopen').href = mailUrl;
+    form.hidden = true;
+    done.classList.add('show');
+    window.location.href = mailUrl;
+  });
+
+  function copy(text, btn) {
+    var label = btn.textContent;
+    function ok() { btn.textContent = '복사했습니다'; setTimeout(function () { btn.textContent = label; }, 1800); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(ok, fallback);
+    } else fallback();
+    function fallback() {
+      var t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select();
+      try { document.execCommand('copy'); ok(); } catch (e) {} document.body.removeChild(t);
+    }
+  }
+  document.getElementById('copyAll').addEventListener('click', function (e) { copy(document.getElementById('preview').textContent, e.currentTarget); });
+  document.querySelectorAll('[data-copy]').forEach(function (b) { b.addEventListener('click', function () { copy(b.dataset.copy, b); }); });
+  document.getElementById('edit').addEventListener('click', function () { done.classList.remove('show'); form.hidden = false; el('name').focus(); });
+})();
+</script>
+<script src="assets/cursor.js" data-logo="assets/ieu-logo-96.png"></script>
+</body>
+</html>

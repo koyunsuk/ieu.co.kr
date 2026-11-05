@@ -168,6 +168,10 @@ section { padding: 110px 0; }
 .blog-excerpt { font-size: .86rem; color: var(--sub); line-height: 1.7; word-break: keep-all; }
 .blog-category { font-family: var(--mono); font-size: .68rem; color: var(--blue); margin-top: .8rem; }
 .blog-more { text-align: center; margin-top: 2.6rem; }
+a.blog-card { text-decoration: none; color: inherit; }
+.blog-thumb { width: 60px; height: 60px; border-radius: 16px; object-fit: cover; background: var(--night); }
+.blog-status { font-family: var(--mono); font-size: .7rem; color: var(--mute); margin-bottom: 1rem; display: none; }
+.blog-status.show { display: block; }
 
 /* CONTACT */
 #contact { padding: 40px 0 110px; }
@@ -248,7 +252,7 @@ footer .tagline { font-family: var(--mono); letter-spacing: .14em; font-size: .7
         <a href="https://blog.naver.com/ieu" target="_blank" rel="noopener">NB</a>
         <a href="https://github.com/koyunsuk" target="_blank" rel="noopener">GH</a>
       </div>
-      <a href="#contact" class="nav-cta">프로젝트 문의</a>
+      <a href="contact.html" class="nav-cta">프로젝트 문의</a>
     </div>
   </div>
 </nav>
@@ -261,7 +265,7 @@ footer .tagline { font-family: var(--mono); letter-spacing: .14em; font-size: .7
       <p class="hero-desc">이음유니언은 기획·디자인부터 웹·앱 개발, 배포와 운영까지 한 팀처럼 함께합니다. 아이디어를 실제로 작동하는 서비스로 만듭니다.</p>
       <div class="hero-cta">
         <a href="#projects" class="btn btn-primary">프로젝트 보기 →</a>
-        <a href="#contact" class="btn btn-ghost">프로젝트 문의</a>
+        <a href="contact.html" class="btn btn-ghost">프로젝트 문의</a>
       </div>
       <div class="hero-stats">
         <div><span class="stat-num">5+</span><p class="stat-label">PROJECTS</p></div>
@@ -406,7 +410,7 @@ footer .tagline { font-family: var(--mono); letter-spacing: .14em; font-size: .7
           <div class="tags"><span class="tag">React Native</span><span class="tag">NestJS</span><span class="tag">GPT-4o</span></div>
         </div>
       </a>
-      <a href="#contact" class="project-card project-cta">
+      <a href="contact.html" class="project-card project-cta">
         <div class="project-info">
           <img src="assets/ieu-logo-96.png" alt="" width="64" height="60">
           <p class="project-name">다음 프로젝트를<br>함께 만들어요</p>
@@ -422,9 +426,10 @@ footer .tagline { font-family: var(--mono); letter-spacing: .14em; font-size: .7
   <div class="wrap">
     <div class="sec-head">
       <div><p class="sec-kicker">04 — Notes</p><h2 class="sec-title">블로그</h2></div>
-      <a href="https://blog.naver.com/ieu" target="_blank" rel="noopener" class="btn btn-line">네이버 블로그에서 더 보기 →</a>
+      <a href="https://blog.naver.com/ieu" target="_blank" rel="noopener" class="btn btn-line" id="blogMore">블로그에서 더 보기 →</a>
     </div>
-    <div class="blog-grid">
+    <p class="blog-status" id="blogStatus" aria-live="polite"></p>
+    <div class="blog-grid" id="blogGrid">
       <div class="blog-card">
         <div class="blog-mark">DEV<br>SETUP</div>
         <div>
@@ -492,5 +497,52 @@ footer .tagline { font-family: var(--mono); letter-spacing: .14em; font-size: .7
   </div>
 </footer>
 
+<script>
+/* 블로그 자동 불러오기 — 구글 블로그(Blogger) 공개 피드에서 최신 글을 가져옵니다.
+   BLOGGER_URL에 블로그 주소를 넣으면 동작하고, 비어 있거나 불러오기에 실패하면 아래 기존 카드를 그대로 보여줍니다.
+   BLOG_LABEL을 정하면 그 라벨(예: 기술)이 붙은 글만 가져옵니다. */
+var BLOGGER_URL = '';
+var BLOG_LABEL = '';
+var BLOG_MAX = 4;
+
+function ieuBlogRender(data) {
+  var entries = (data && data.feed && data.feed.entry) || [];
+  if (!entries.length) return;
+  var grid = document.getElementById('blogGrid');
+  var esc = function (s) { var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; };
+  var strip = function (h) { var d = document.createElement('div'); d.innerHTML = (h || '').replace(/<(br|\/p|\/div|\/h\d|\/li)[^>]*>/gi, ' '); return (d.textContent || '').replace(/\s+/g, ' ').trim(); };
+  grid.innerHTML = entries.slice(0, BLOG_MAX).map(function (e) {
+    var link = (e.link || []).filter(function (l) { return l.rel === 'alternate'; })[0];
+    var text = strip((e.summary || e.content || {}).$t);
+    var label = (e.category && e.category[0] && e.category[0].term) || 'NOTE';
+    var date = (e.published && e.published.$t || '').slice(0, 10).replace(/-/g, '.');
+    var thumb = e.media$thumbnail && e.media$thumbnail.url;
+    var mark = thumb ? '<img class="blog-thumb" src="' + esc(thumb.replace(/\/s72-c\//, '/s160-c/')) + '" alt="" loading="lazy">'
+                     : '<div class="blog-mark">' + esc(label.slice(0, 8).toUpperCase()) + '</div>';
+    return '<a class="blog-card" href="' + esc(link ? link.href : BLOGGER_URL) + '" target="_blank" rel="noopener">' + mark +
+      '<div><p class="blog-date">' + esc(date) + '</p><h3 class="blog-title">' + esc(e.title && e.title.$t) + '</h3>' +
+      '<p class="blog-excerpt">' + esc(text.length > 110 ? text.slice(0, 110) + '…' : text) + '</p>' +
+      '<p class="blog-category">// ' + esc(label.toUpperCase()) + '</p></div></a>';
+  }).join('');
+  document.getElementById('blogStatus').classList.remove('show');
+}
+
+(function () {
+  if (!BLOGGER_URL) return;
+  var base = BLOGGER_URL.replace(/\/+$/, '');
+  var more = document.getElementById('blogMore');
+  more.href = base;
+  var s = document.createElement('script');
+  s.src = base + '/feeds/posts/default' + (BLOG_LABEL ? '/-/' + encodeURIComponent(BLOG_LABEL) : '') +
+          '?alt=json-in-script&max-results=' + BLOG_MAX + '&callback=ieuBlogRender';
+  s.onerror = function () {
+    var st = document.getElementById('blogStatus');
+    st.textContent = '블로그 글을 불러오지 못해 대표 글을 보여드립니다.';
+    st.classList.add('show');
+  };
+  document.body.appendChild(s);
+})();
+</script>
+<script src="assets/cursor.js" data-logo="assets/ieu-logo-96.png"></script>
 </body>
 </html>
