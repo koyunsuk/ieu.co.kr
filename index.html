@@ -362,7 +362,7 @@ footer .tagline { font-family: var(--mono); letter-spacing: .14em; font-size: .7
       <div><p class="sec-kicker">03 — Work</p><h2 class="sec-title">프로젝트</h2></div>
       <p class="sec-lead">직접 운영하는 서비스부터 고객사 납품 프로젝트까지, 이음유니언이 만든 결과물입니다.</p>
     </div>
-    <div class="projects-grid">
+    <div class="projects-grid" id="projectsGrid">
       <a href="https://moriknit.com" target="_blank" rel="noopener" class="project-card">
         <div class="project-thumb">
           <img src="assets/moriknit-web.jpg" alt="모리니트 웹 메인 화면" loading="lazy" width="1200" height="750">
@@ -543,6 +543,35 @@ function ieuBlogRender(data) {
     st.classList.add('show');
   };
   document.body.appendChild(s);
+})();
+</script>
+<script src="assets/hub.js"></script>
+<script>
+/* 프로젝트 카드: IEU Hub 데이터룸의 공개 프로젝트로 그린다. 불러오지 못하면 위에 써 둔 카드를 그대로 둔다. */
+(function () {
+  var grid = document.getElementById('projectsGrid');
+  if (!grid || !window.IEUHub) return;
+  var H = window.IEUHub, esc = H.esc;
+  H.projects().then(function (list) {
+    if (!list.length) return;
+    var cta = grid.querySelector('.project-cta');
+    grid.innerHTML = list.map(function (p, i) {
+      var ext = p.link === 'url' && p.url;
+      var dev = /개발|기획/.test(p.status || '');
+      return '<a href="' + esc(H.href(p)) + '" class="project-card"' + (ext ? ' target="_blank" rel="noopener"' : '') + '>' +
+        '<div class="project-thumb">' +
+          (p.cover ? '<img src="' + esc(p.cover) + '" alt="' + esc(p.name) + ' 화면' + (p.concept === 'yes' ? ' (UI 컨셉)' : '') + '" loading="lazy">' : '<div style="width:100%;height:100%;background:var(--night)"></div>') +
+          (p.icon ? '<img class="badge-icon" src="' + esc(p.icon) + '" alt="">' : '') +
+          (p.concept === 'yes' ? '<span class="concept">UI CONCEPT</span>' : '') +
+        '</div><div class="project-info">' +
+          '<div class="project-top"><span class="status ' + (dev ? 'status-dev' : 'status-done') + '">' + esc(p.status || '') + '</span><span class="project-num">' + String(i + 1).padStart(2, '0') + '</span></div>' +
+          '<p class="project-name">' + esc(p.name) + '</p>' +
+          '<p class="project-desc">' + esc(p.summary || '') + '</p>' +
+          '<div class="tags">' + (p.stack || []).map(function (t) { return '<span class="tag">' + esc(t) + '</span>'; }).join('') + '</div>' +
+        '</div></a>';
+    }).join('');
+    if (cta) grid.appendChild(cta);
+  }).catch(function () { /* 데이터룸 연결 실패 → 기본 카드 유지 */ });
 })();
 </script>
 <script src="assets/cursor.js" data-logo="assets/ieu-logo-96.png"></script>
